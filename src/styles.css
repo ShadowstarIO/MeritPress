@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-bg: #0a0c0e;
+  --color-surface: #12161a;
+  --color-raised: #181d22;
+  --color-elevated: #181d22;
+  --color-inset: #0e1114;
+  --color-fg: #ecece8;
+  --color-muted: #8a9199;
+  --color-subtle: #5c646c;
+  --color-border: #2a323a;
+  --color-line: #1e252c;
+  --color-accent: #c8ccd2;
+  --color-accent-fg: #0a0c0e;
+  --color-ring: #c8ccd2;
+
+  --color-panel: #15191e;
+  --color-paper: #e7e2d6;
+  --color-navy: #1e3148;
+  --color-crimson: #8e2e32;
+  --color-misdemeanor: #7a8fa3;
+  --color-citation: #9aa094;
+  --color-regulatory: #8b7e6a;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    color: var(--color-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+.ribbon-shadow {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.studio-well {
+  background: radial-gradient(circle at center, var(--color-raised) 0%, var(--color-bg) 72%);
+}
+
+.studio-shell {
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
